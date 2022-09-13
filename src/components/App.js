@@ -19,7 +19,8 @@ export default class App extends Component {
       window.web3 = new Web3(window.ethereuem);
       await window.ethereum.enable();
     } else if (window.web3) {
-      window.web3 = new Web3(window.web3.currentProvider);
+      // window.web3 = new Web3(window.web3.currentProvider);
+      window.web3 = new Web3(new Web3.providers.HttpProvider(`http://127.0.0.1:7545`));
     } else {
       window.alert("No ethereum browser detected! You can check out MetaMask!");
     }
@@ -30,7 +31,6 @@ export default class App extends Component {
     const account = await web3.eth.getAccounts();
     this.setState({ account: account[0] });
     const networkId = await web3.eth.net.getId();
-    console.log("networkId", networkId)
     // Load Tether Contract
     const tetherData = Tether.networks[networkId];
     if (tetherData) {
