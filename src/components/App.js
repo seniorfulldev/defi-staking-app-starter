@@ -30,7 +30,7 @@ export default class App extends Component {
     const account = await web3.eth.getAccounts();
     this.setState({ account: account[0] });
     const networkId = await web3.eth.net.getId();
-
+    console.log("networkId", networkId)
     // Load Tether Contract
     const tetherData = Tether.networks[networkId];
     if (tetherData) {
