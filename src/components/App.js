@@ -40,7 +40,7 @@ export default class App extends Component {
         .balanceOf(this.state.account)
         .call();
       this.setState({ tetherBalance: tetherBalance.toString() });
-      console.log({ balance: tetherBalance });
+      console.log({ tetherBalance: tetherBalance });
     } else {
       window.alert("Error! Tether contract not deployed to detect network!");
     }
